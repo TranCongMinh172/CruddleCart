@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Products</title>
+</head>
+<body>
+
+<div class="container">
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>manufacturer name</th>
+            <th>name</th>
+            <th>description</th>
+            <th>status</th>
+            <th>unit</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="product :${products} " >
+            <td th:text="${product.getProduct_id()}"></td>
+            <td th:text="${product.getManufacturer()}"> </td>
+            <td th:text="${product.getName()}"> </td>
+            <td th:text="${product.getDescription()}"> </td>
+            <td th:text="${product.getStatus()}"></td>
+            <td th:text="${product.getUnit()}"></td>
+            <td><a th:href="@{/product/insert}">Insert</a></td>
+            <td><a th:href="@{/product/update/{id}(id=${product.getProduct_id()})}">Update</a></td>
+            <td><a th:href="@{/product/delete/{id}(id=${product.getProduct_id()})}">Delete</a></td>
+            <td><a th:href="@{/product/addToCart/{id}(id=${product.getProduct_id()})}" class="btn btn-success">Add to Cart</a></td>
+        </tr>
+
+        <!-- Add more rows as needed -->
+        </tbody>
+    </table>
+    <div th:each="i : ${#numbers.sequence(0, pageSize - 1 )}" style="display: inline-block">
+        <a th:text="${i + 1}" th:href="@{/product(pageNumber = ${i})}"></a>
+    </div>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>

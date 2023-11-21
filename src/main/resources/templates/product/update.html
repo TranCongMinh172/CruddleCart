@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Product</title>
+    <!-- Link to Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+
+<form class="container" th:action="@{/product/update/{id}(id=${product.product_id})}" method="post" th:object="${product}">
+
+    <div class="form-group">
+        <label>ProductId:</label>
+        <input type="text" class="form-control" th:field="*{product_id}" readonly required>
+    </div>
+
+    <div class="form-group">
+        <label >Manufacturer Name:</label>
+        <input type="text" class="form-control" th:field="*{manufacturer}" required>
+    </div>
+
+    <div class="form-group">
+        <label >Product Name:</label>
+        <input type="text" class="form-control" th:field="*{name}" required>
+    </div>
+
+    <div class="form-group">
+        <label >Description:</label>
+        <input type="text" class="form-control" th:field="*{description}">
+    </div>
+
+    <div class="form-group">
+        <label >Status:</label>
+        <select class="form-control" th:field="*{status}">
+            <option value="ACTIVE">Active</option>
+            <option value="IN_ACTIVE">Inactive</option>
+            <option value="TERMINATED">Terminated</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Unit:</label>
+        <input type="text" class="form-control" th:field="*{unit}" required>
+    </div>
+    <div th:if="${error}" class="alert alert-danger" role="alert">
+        <p th:text="${error}"></p>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update Product</button>
+</form>
+
+<!-- Link to Bootstrap JS and Popper.js (optional) -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
