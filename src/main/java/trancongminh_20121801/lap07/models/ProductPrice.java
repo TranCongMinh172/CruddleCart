@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 public class ProductPrice {
     @Id
     @JoinColumn(name = "product_id")
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     private Product product;
     @Id
     @Column(name = "price_date_time")

@@ -16,12 +16,12 @@ public class OrderDetail {
     private String note;
 
     @Id
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "order_id")
     private Order order;
     @Id
     @JoinColumn(name = "product_id")
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     private Product product;
 
     public OrderDetail() {

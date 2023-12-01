@@ -33,12 +33,12 @@ public class Product {
     @Column(name = "status")
     private ProductStatus status;
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "product")
     private List<ProductImage> productImageList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "product")
     private List<OrderDetail> orderDetails = new ArrayList<>();
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "product")
     private List<ProductPrice> productPrices = new ArrayList<>();
 
     public Product() {

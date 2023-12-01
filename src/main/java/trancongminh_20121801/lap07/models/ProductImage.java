@@ -16,7 +16,7 @@ public class ProductImage {
     @Column(name = "alternative", length = 250)
     private String alternative;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "product_id")
     private Product product;
 

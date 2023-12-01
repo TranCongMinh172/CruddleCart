@@ -40,7 +40,7 @@ public class Employee {
     @Enumerated(EnumType.ORDINAL)
     private EmployeeStatus status;
 
-    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "employee")
 //    @JoinColumn
     private List<Order> lstOrder;
 

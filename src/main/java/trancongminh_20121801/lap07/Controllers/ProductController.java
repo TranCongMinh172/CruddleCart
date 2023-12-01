@@ -27,7 +27,7 @@ public class ProductController {
     @GetMapping
     public String getAll(Model model, Optional<Integer> pageNumber){
         int page = pageNumber.orElse((0));
-        Pageable pageable = PageRequest.of(page,10);
+        Pageable pageable = PageRequest.of(page,6);
         Page<Product> products = productService.getAllProductNotTerminated(pageable);
         model.addAttribute("products", products);
         model.addAttribute("pageSize", products.getTotalPages());
@@ -76,6 +76,6 @@ public class ProductController {
             cartItem.add(product);
             session.setAttribute("cart", cartItem);
         }
-        return "redirect:/cart";
+        return "redirect:/product";
     }
 }

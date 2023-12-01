@@ -40,7 +40,7 @@ public class Lap07Application {
     ProductPriceRepository productPriceRepository;
     @Autowired
     OrderRepository orderRepository;
-//    @Bean
+ //  @Bean
     CommandLineRunner createSampleProduct(OrderDetailRepository orderDetailRepository){
         return args -> {
             Faker faker = new Faker();
@@ -50,10 +50,10 @@ public class Lap07Application {
             Address address = faker.address();
             Random random = new Random();
 
-            for(int i=0;i<200;i++){
+            for(int i=0;i<100;i++){
                 Product product = new Product(
                         device.modelName(),
-                        faker.lorem().paragraph(20),
+                        faker.lorem().sentence(5),
                         "piece",
                         device.manufacturer(),
                         ProductStatus.ACTIVE

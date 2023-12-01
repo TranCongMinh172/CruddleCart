@@ -7,6 +7,7 @@
 <body>
 
 <div class="container">
+    <h2>Product List</h2>
     <table class="table table-bordered">
         <thead>
         <tr>
@@ -26,7 +27,7 @@
             <td th:text="${product.getDescription()}"> </td>
             <td th:text="${product.getStatus()}"></td>
             <td th:text="${product.getUnit()}"></td>
-            <td><a th:href="@{/product/insert}">Insert</a></td>
+
             <td><a th:href="@{/product/update/{id}(id=${product.getProduct_id()})}">Update</a></td>
             <td><a th:href="@{/product/delete/{id}(id=${product.getProduct_id()})}">Delete</a></td>
             <td><a th:href="@{/product/addToCart/{id}(id=${product.getProduct_id()})}" class="btn btn-success">Add to Cart</a></td>
@@ -35,8 +36,14 @@
         <!-- Add more rows as needed -->
         </tbody>
     </table>
+    <div>
+        <a th:href="@{/product/insert} " class="btn btn-success">Insert</a>
+    </div>
     <div th:each="i : ${#numbers.sequence(0, pageSize - 1 )}" style="display: inline-block">
         <a th:text="${i + 1}" th:href="@{/product(pageNumber = ${i})}"></a>
+    </div>
+    <div>
+        <a th:href="@{/cart}">Check out</a>
     </div>
 
 </div>
